@@ -9,17 +9,51 @@ const tabs = [
 ];
 
 const NavBar: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Articles & Issues");
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+
+  // Dropdown menu options for each tab (text + href)
+  const dropdownItems: Record<string, { text: string; href: string }[]> = {
+    "Articles & Issues": [
+      { text: "Latest issue", href: "#latest-issue" },
+      { text: "All issues", href: "#all-issues" },
+      { text: "Articles in press", href: "#articles-in-press" },
+      { text: "Special issues and article collections", href: "#special-issues" },
+      { text: "Linked datasets", href: "#linked-datasets" },
+      { text: "Sign in to set up alerts", href: "#set-up-alerts" },
+      { text: "RSS", href: "#rss" },
+    ],
+    "About": [
+      { text: "Aims and scope", href: "#aims-scope" },
+      { text: "Editorial board", href: "#editorial-board" },
+      { text: "Journal insights", href: "#journal-insights" },
+      { text: "News", href: "#news" },
+      { text: "Editors' Choice", href: "#editors-choice" },
+      { text: "Awards", href: "#awards" },
+    ],
+    "Publish": [
+      { text: "Submit your article", href: "#submit-article" },
+      { text: "Guide for authors", href: "#guide-authors" },
+      { text: "Call for papers", href: "#call-papers" },
+      { text: "Policies and Guidelines", href: "#policies-guidelines" },
+      { text: "Open access options", href: "#open-access" },
+      { text: "Compare journals", href: "#compare-journals" },
+      { text: "Language Editing services", href: "#language-editing" },
+    ],
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-20">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <ul className="flex items-center space-x-1 -mb-px">
+          <ul className="flex items-center space-x-1 -mb-px relative">
             {tabs.map((tab) => (
-              <li key={tab.name}>
+              <li
+                key={tab.name}
+                className="relative"
+                onMouseEnter={() => tab.dropdown ? setActiveTab(tab.name) : setActiveTab(null)}
+                onMouseLeave={() => setActiveTab(null)}
+              >
                 <button
-                  onClick={() => setActiveTab(tab.name)}
                   className={`py-4 px-3 inline-flex items-center text-sm transition-colors gap-1
                     ${
                       activeTab === tab.name
@@ -30,6 +64,23 @@ const NavBar: React.FC = () => {
                   {tab.name}
                   {tab.dropdown && <ChevronDown size={16} />}
                 </button>
+                {/* Dropdown menu for first three tabs */}
+                {tab.dropdown && activeTab === tab.name && dropdownItems[tab.name] && (
+                  <div className="absolute left-0 top-full w-64 bg-white shadow-lg rounded border border-gray-200 z-30">
+                    <ul className="py-2">
+                      {dropdownItems[tab.name].map((item, idx) => (
+                        <li key={idx}>
+                          <a
+                            href={item.href}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                          >
+                            {item.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
           </ul>

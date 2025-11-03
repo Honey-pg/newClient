@@ -4,6 +4,7 @@ import JournalBanner from './components/JournalBanner';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import AboutJournal from './components/AboutJournal';
+import PublishingOptions from './components/PublishingOptions';
 import Timeline from './components/Timeline';
 import EditorInChief from './components/EditorInChief';
 import ArticlesSection from './components/ArticlesSection';
@@ -12,6 +13,7 @@ import CallsForPapers from './components/CallsForPapers';
 import OpenCalls from './components/OpenCalls';
 import SpecialIssues from './components/SpecialIssues';
 import Sidebar from './components/Sidebar';
+import FeedbackButton from './components/FeedbackButton';
 
 function App() {
   return (
@@ -21,10 +23,19 @@ function App() {
       <NavBar />
 
       <main className="container mx-auto px-4 mt-8">
+        {/* AboutJournal and PublishingOptions side-by-side */}
+        <div className="flex flex-col lg:flex-row gap-8 mb-10">
+          <div className="w-full lg:w-3/4">
+            <AboutJournal />
+          </div>
+          <div className="w-full lg:w-1/4">
+            <PublishingOptions />
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Content */}
           <div className="w-full lg:w-3/4 flex flex-col gap-10">
-            <AboutJournal />
             <Timeline />
             <EditorInChief />
             <ArticlesSection />
@@ -36,6 +47,8 @@ function App() {
 
           {/* Sidebar */}
           <Sidebar />
+          {/* Fixed Feedback Button */}
+          <FeedbackButton />
         </div>
       </main>
 
