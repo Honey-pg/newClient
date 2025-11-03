@@ -5,6 +5,14 @@ import { ChevronRight } from 'lucide-react';
 
 const articleTabs = ["Latest published", "Articles in press", "Top cited", "Most downloaded", "Most popular"];
 
+const tabArticles: Record<string, typeof articles> = {
+  "Latest published": articles,
+  "Articles in press": articles.map((a, i) => ({ ...a, title: a.title + " (In Press)", date: "November 2025" })),
+  "Top cited": articles.map((a, i) => ({ ...a, title: a.title + " (Top Cited)", date: "October 2025" })),
+  "Most downloaded": articles.map((a, i) => ({ ...a, title: a.title + " (Most Downloaded)", date: "September 2025" })),
+  "Most popular": articles.map((a, i) => ({ ...a, title: a.title + " (Popular)", date: "August 2025" })),
+};
+
 const ArticlesSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Latest published");
 
@@ -25,7 +33,7 @@ const ArticlesSection: React.FC = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {articles.map((article, index) => (
+        {tabArticles[activeTab].map((article, index) => (
           <ArticleGridCard key={index} article={article} />
         ))}
       </div>
