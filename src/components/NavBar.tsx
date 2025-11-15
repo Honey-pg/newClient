@@ -12,7 +12,7 @@ const tabs = [
 const NavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
-  // Dropdown menu options for each tab (text + href)
+
   const dropdownItems: Record<string, { text: string; href: string }[]> = {
     "Articles & Issues": [
       { text: "Latest issue", href: "#latest-issue" },
