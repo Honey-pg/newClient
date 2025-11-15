@@ -25,6 +25,7 @@ import AimsAndScope from "./components/AimsAndScope";
 import GuideForAuthors from "./pages/publish/guide_for_authors";
 import SubmitArticle from "./pages/submit_article/submit_article"; // 👈 Add this page
 import PoliciesAndGuidelines from "./pages/publish/policies_and_guidelines";
+import CallForAuthorsList, { CallForAuthorsDetail } from "./pages/publish/call_for_authors";
 
 
 // Home Page as a separate component for cleaner structure
@@ -84,6 +85,8 @@ function App() {
             <Route path="/submit-article" element={<SubmitArticle />} />
             <Route path="/policies-and-guidelines" element={<PoliciesAndGuidelines />} />
             <Route path="/guide_for_authors" element={<GuideForAuthors />} />
+            <Route path="/publish/call-for-authors" element={<CallForAuthorsList />} />
+            <Route path="/publish/call-for-authors/:id" element={<CallForAuthorsDetail />} />
 
           </Routes>
         </main>

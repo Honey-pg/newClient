@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
     "Publish": [
       { text: "Submit your article", href: "submit-article" },
       { text: "Guide for authors", href: "guide_for_authors" },
-      { text: "Call for papers", href: "#call-papers" },
+      { text: "Call for papers", href: "/publish/call-for-authors" },
       { text: "Policies and Guidelines", href: "policies-and-guidelines" },
       { text: "Open access options", href: "#open-access" },
       { text: "Compare journals", href: "#compare-journals" },
@@ -71,9 +71,9 @@ const NavBar: React.FC = () => {
                     <ul className="py-2">
                       {dropdownItems[tab.name].map((item, idx) => (
                         <li key={idx}>
-                          {item.text === 'Aims and scope' ? (
+                          {item.text === 'Aims and scope' || item.text === 'Call for papers' ? (
                             <Link
-                              to="/aims-and-scope"
+                              to={item.text === 'Aims and scope' ? "/aims-and-scope" : "/publish/call-for-authors"}
                               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
                             >
                               {item.text}
