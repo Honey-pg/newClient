@@ -373,7 +373,7 @@ export default function guide_for_author() {
                 </h2>
                 <PlaceholderContent />
 
-                {/* Render Subsections if they exist */}
+                {/* Render Subsections  */}
                 {item.subsections && (
                   <div className="space-y-12 mt-12">
                     {item.subsections.map(subItem => (
