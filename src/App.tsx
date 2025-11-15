@@ -24,6 +24,8 @@ import SpecialIssues from "./components/SpecialIssues";
 import AimsAndScope from "./components/AimsAndScope";
 import GuideForAuthors from "./pages/publish/guide_for_authors";
 import SubmitArticle from "./pages/submit_article/submit_article"; // 👈 Add this page
+import PoliciesAndGuidelines from "./pages/publish/policies_and_guidelines";
+
 
 // Home Page as a separate component for cleaner structure
 const HomePage = () => {
@@ -80,7 +82,9 @@ function App() {
             <Route path="/aims-and-scope" element={<AimsAndScope />} />
             <Route path="/publish/guide-for-authors" element={<GuideForAuthors />} />
             <Route path="/submit-article" element={<SubmitArticle />} />
+            <Route path="/policies-and-guidelines" element={<PoliciesAndGuidelines />} />
             <Route path="/guide_for_authors" element={<GuideForAuthors />} />
+
           </Routes>
         </main>
 

@@ -12,7 +12,7 @@ const tabs = [
 const NavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
-  // Dropdown menu options for each tab (text + href)
+
   const dropdownItems: Record<string, { text: string; href: string }[]> = {
     "Articles & Issues": [
       { text: "Latest issue", href: "#latest-issue" },
@@ -33,9 +33,9 @@ const NavBar: React.FC = () => {
     ],
     "Publish": [
       { text: "Submit your article", href: "submit-article" },
-      { text: "Guide for authors", href: "guide_for_authors" },
+      { text: "Guide for authors", href: "#guide-authors" },
       { text: "Call for papers", href: "#call-papers" },
-      { text: "Policies and Guidelines", href: "#policies-guidelines" },
+      { text: "Policies and Guidelines", href: "policies-and-guidelines" },
       { text: "Open access options", href: "#open-access" },
       { text: "Compare journals", href: "#compare-journals" },
       { text: "Language Editing services", href: "#language-editing" },
