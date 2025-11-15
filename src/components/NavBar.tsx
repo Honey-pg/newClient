@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
     ],
     "Publish": [
       { text: "Submit your article", href: "submit-article" },
-      { text: "Guide for authors", href: "#guide-authors" },
+      { text: "Guide for authors", href: "guide_for_authors" },
       { text: "Call for papers", href: "#call-papers" },
       { text: "Policies and Guidelines", href: "policies-and-guidelines" },
       { text: "Open access options", href: "#open-access" },
@@ -101,7 +101,7 @@ const NavBar: React.FC = () => {
                 <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             </div>
             <a href="submit-article" className="text-brand-blue hover:underline">Submit your article</a>
-            <a href="#" className="text-brand-blue hover:underline">Guide for authors</a>
+            <a href="guide_for_authors" className="text-brand-blue hover:underline">Guide for authors</a>
           </div>
         </div>
       </div>
