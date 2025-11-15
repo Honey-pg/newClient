@@ -47,7 +47,7 @@ interface ContentSection {
  */
 export default function guide_for_author() {
   // State to keep track of the currently active section
-  const [activeSection, setActiveSection] = useState<string>('abstract');
+  const [activeSection, setActiveSection] = useState<string>('guide-authors');
   
   // Ref for the main scrolling container (the <main> element)
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -58,65 +58,148 @@ export default function guide_for_author() {
   // Data for the sidebar navigation, structured into groups
   const navGroups: NavGroup[] = [
     {
-      groupTitle: 'Article Outline',
+      groupTitle: 'About the journal',
       links: [
+        { id: 'aims-scope', title: 'Aims and scope' },
+        { id: 'peer-review', title: 'Peer review' },
+        { id: 'open-access', title: 'Open access' },
+      ]
+    },
+    {
+      groupTitle: 'Ethics and policies',
+      links: [
+        { id: 'ethics-publishing', title: 'Ethics in publishing' },
+        { id: 'submission-declaration', title: 'Submission declaration' },
+        { id: 'authorship', title: 'Authorship' },
+        { id: 'changes-authorship', title: 'Changes to authorship' },
+        { id: 'competing-interests', title: 'Declaration of competing interests' },
+        { id: 'funding-sources', title: 'Funding sources' },
+        { id: 'ai-use', title: 'Declaration of generative AI use' },
+        { id: 'preprints', title: 'Preprints' },
+        { id: 'inclusive-language', title: 'Use of inclusive language' },
+        { id: 'sex-gender-analyses', title: 'Reporting sex- and gender-based analyses' },
+        { id: 'jurisdictional-claims', title: 'Jurisdictional claims' },
+      ]
+    },
+    {
+      groupTitle: 'Writing and formatting',
+      links: [
+        { id: 'file-format', title: 'File format' },
+        { id: 'latex', title: 'LaTeX' },
+        { id: 'title-page', title: 'Title page' },
         { id: 'abstract', title: 'Abstract' },
         { id: 'keywords', title: 'Keywords' },
-        { id: 'introduction', title: '1. Introduction' },
+        { id: 'highlights', title: 'Highlights' },
+        { id: 'graphical-abstract', title: 'Graphical abstract' },
+        { id: 'units-classifications', title: 'Units, classifications codes and nomenclature' },
+        { id: 'math-formulae', title: 'Math formulae' },
+        { id: 'tables', title: 'Tables' },
+        { id: 'figures-images', title: 'Figures, images and artwork' },
+        { id: 'ai-figures', title: 'Generative AI and Figures, images and artwork' },
+        { id: 'supplementary-material', title: 'Supplementary material' },
+        { id: 'video', title: 'Video' },
       ]
     },
     {
-      groupTitle: 'Core Research',
+      groupTitle: 'Research data',
       links: [
-        { id: 'related-work', title: '2. Related work' },
-        { id: 'conceptual-model', title: '3. Conceptual model and hypotheses' },
-        { id: 'methodology', title: '4. Methodology' },
-        { id: 'results', title: '5. Results' },
-        { id: 'discussion', title: '6. Discussion' },
-        { id: 'conclusion', title: '7. Conclusion and limitations' },
+        { id: 'research-data', title: 'Research data' },
+        { id: 'data-linking', title: 'Data linking' },
+        { id: 'research-elements', title: 'Research Elements' },
+        { id: 'co-submission', title: 'Co-submission of related data, methods or protocols' },
       ]
     },
     {
-      groupTitle: 'Declarations & Extras',
+      groupTitle: 'Article structure',
       links: [
-        { id: 'cr-author-statement', title: 'CRediT authorship contribution' },
-        { id: 'declaration', title: 'Declaration of Competing Interest' },
-        { id: 'acknowledgment', title: 'Acknowledgment' },
+        { id: 'article-structure', title: 'Article structure' },
         { id: 'references', title: 'References' },
+      ]
+    },
+    {
+      groupTitle: 'Submitting your manuscript',
+      links: [
+        { id: 'submission-checklist', title: 'Submission checklist' },
+        { id: 'submit-online', title: 'Submit online' },
+       
+      ]
+    },
+    {
+      groupTitle: 'After receiving a final decision',
+      links: [
+        
+        { id: 'article-transfer', title: 'Article Transfer Service' },
+        { id: 'publishing-agreement', title: 'Publishing agreement' },
+        { id: 'license-options', title: 'License options' },
+        { id: 'permission-copyrighted', title: 'Permission for copyrighted works' },
+        { id: 'proof-correction', title: 'Proof correction' },
+        { id: 'offprints', title: 'Offprints' },
+        { id: 'responsible-sharing', title: 'Responsible sharing' },
+      ]
+    },
+    {
+      groupTitle: 'Resources for authors',
+      links: [
+        { id: 'elsevier-academy', title: 'Elsevier Researcher Academy' },
+        { id: 'language-editing', title: 'Language and editing services' },
+        { id: 'getting-help', title: 'Getting help and support' },
+        { id: 'author-support', title: 'Author support' },
       ]
     }
   ];
 
   // Data for the main content area, including subsections
   const contentSections: ContentSection[] = [
+    { id: 'guide-authors', title: 'Guide for authors' },
+    { id: 'about-journal', title: 'About the journal' },
+    { id: 'aims-scope', title: 'Aims and scope' },
+    { id: 'peer-review', title: 'Peer review' },
+    { id: 'open-access', title: 'Open access' },
+    { id: 'ethics-publishing', title: 'Ethics in publishing' },
+    { id: 'submission-declaration', title: 'Submission declaration' },
+    { id: 'authorship', title: 'Authorship' },
+    { id: 'changes-authorship', title: 'Changes to authorship' },
+    { id: 'competing-interests', title: 'Declaration of competing interests' },
+    { id: 'funding-sources', title: 'Funding sources' },
+    { id: 'ai-use', title: 'Declaration of generative AI use' },
+    { id: 'preprints', title: 'Preprints' },
+    { id: 'inclusive-language', title: 'Use of inclusive language' },
+    { id: 'sex-gender-analyses', title: 'Reporting sex- and gender-based analyses' },
+    { id: 'jurisdictional-claims', title: 'Jurisdictional claims' },
+    { id: 'file-format', title: 'File format' },
+    { id: 'latex', title: 'LaTeX' },
+    { id: 'title-page', title: 'Title page' },
     { id: 'abstract', title: 'Abstract' },
     { id: 'keywords', title: 'Keywords' },
-    { id: 'introduction', title: '1. Introduction' },
-    { 
-      id: 'related-work', 
-      title: '2. Related work', 
-      subsections: [
-        { id: 'related-work-sub1', title: '2.1. First related work' },
-        { id: 'related-work-sub2', title: '2.2. Second related work' },
-      ] 
-    },
-    { 
-      id: 'conceptual-model', 
-      title: '3. Conceptual model and hypotheses development', 
-      subsections: [
-        { id: 'conceptual-model-sub1', title: '3.1. Conceptual model' },
-        { id: 'conceptual-model-sub2', title: '3.2. Hypotheses development' },
-        { id: 'conceptual-model-sub3', title: '3.3. Third hypothesis' },
-      ] 
-    },
-    { id: 'methodology', title: '4. Methodology' },
-    { id: 'results', title: '5. Results' },
-    { id: 'discussion', title: '6. Discussion' },
-    { id: 'conclusion', title: '7. Conclusion and limitations' },
-    { id: 'cr-author-statement', title: 'CRediT authorship contribution statement' },
-    { id: 'declaration', title: 'Declaration of Competing Interest' },
-    { id: 'acknowledgment', title: 'Acknowledgment' },
+    { id: 'highlights', title: 'Highlights' },
+    { id: 'graphical-abstract', title: 'Graphical abstract' },
+    { id: 'units-classifications', title: 'Units, classifications codes and nomenclature' },
+    { id: 'math-formulae', title: 'Math formulae' },
+    { id: 'tables', title: 'Tables' },
+    { id: 'figures-images', title: 'Figures, images and artwork' },
+    { id: 'ai-figures', title: 'Generative AI and Figures, images and artwork' },
+    { id: 'supplementary-material', title: 'Supplementary material' },
+    { id: 'video', title: 'Video' },
+    { id: 'research-data', title: 'Research data' },
+    { id: 'data-linking', title: 'Data linking' },
+    { id: 'research-elements', title: 'Research Elements' },
+    { id: 'co-submission', title: 'Co-submission of related data, methods or protocols' },
+    { id: 'article-structure', title: 'Article structure' },
     { id: 'references', title: 'References' },
+    { id: 'submission-checklist', title: 'Submission checklist' },
+    { id: 'submit-online', title: 'Submit online' },
+    { id: 'after-decision', title: 'After receiving a final decision' },
+    { id: 'article-transfer', title: 'Article Transfer Service' },
+    { id: 'publishing-agreement', title: 'Publishing agreement' },
+    { id: 'license-options', title: 'License options' },
+    { id: 'permission-copyrighted', title: 'Permission for copyrighted works' },
+    { id: 'proof-correction', title: 'Proof correction' },
+    { id: 'offprints', title: 'Offprints' },
+    { id: 'responsible-sharing', title: 'Responsible sharing' },
+    { id: 'elsevier-academy', title: 'Elsevier Researcher Academy' },
+    { id: 'language-editing', title: 'Language and editing services' },
+    { id: 'getting-help', title: 'Getting help and support' },
+    { id: 'author-support', title: 'Author support' },
   ];
 
   /**
@@ -215,10 +298,10 @@ export default function guide_for_author() {
   );
 
   return (
-    // Main container
-    <div className="flex flex-col md:flex-row font-sans bg-white min-h-screen">
+    // Main container with flex and margins on all sides
+    <div className="flex font-sans bg-white min-h-screen mb-8 mr-32 ml-32 gap-12">
       
-      {/* Sidebar Navigation */}
+      {/* Left Sidebar Navigation */}
       <nav className="w-full md:w-80 bg-gray-100 p-8 md:sticky md:top-0 md:h-screen md:overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 shrink-0">
         <h1 className="text-2xl font-bold text-gray-900 mb-8">Guide for authors</h1>
         <div className="space-y-6">
@@ -230,11 +313,11 @@ export default function guide_for_author() {
                   e.preventDefault();
                   scrollToSection(group.links[0].id);
                 }}
-                className="text-sm font-bold text-blue-700 hover:underline mb-3 block"
+                className="text-sm font-bold text-blue-700 mb-3 block transition-all duration-200 no-underline hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4"
               >
                 {group.groupTitle}
               </a>
-              <ul className="space-y-2 list-disc pl-5">
+              <ul className="space-y-0 list-disc pl-5 marker:text-blue-400">
                 {group.links.map(link => (
                   <li key={link.id}>
                     <a
@@ -243,10 +326,10 @@ export default function guide_for_author() {
                         e.preventDefault();
                         scrollToSection(link.id);
                       }}
-                      className={`text-sm transition-all duration-200 ${
+                      className={`text-sm transition-all duration-200 no-underline ${
                         activeSection === link.id
-                          ? 'text-blue-700 font-semibold'
-                          : 'text-blue-600 hover:text-blue-700'
+                          ? 'text-blue-700 font-semibold hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4'
+                          : 'text-blue-600 hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4'
                       }`}
                     >
                       {link.title}
@@ -259,13 +342,10 @@ export default function guide_for_author() {
         </div>
       </nav>
 
-      {/* Main Content Area */}
-      <main 
-        ref={mainContentRef} 
-        className="flex-1 md:h-screen md:overflow-y-auto scroll-smooth"
-      >
+      {/* Right Content Area */}
+      <div className="flex-1 flex flex-col text-sm">
         {/* Top action buttons */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-12 py-4 flex justify-end gap-4 z-10">
+        <div className="sticky top-0 bg-white border-b border-gray-200 pl-20 pr-8 py-4 flex justify-end gap-4 z-10">
           <button className="px-6 py-2 text-blue-600 border border-gray-300 rounded hover:bg-gray-50 transition-colors text-sm font-medium">
             Print Guide as PDF
           </button>
@@ -274,41 +354,47 @@ export default function guide_for_author() {
           </button>
         </div>
 
-        {/* Content sections with margins */}
-        <div className="px-16 py-12">
-          {contentSections.map(item => (
-            // Each Main Content Section
-            <section 
-              key={item.id} 
-              id={item.id} 
-              className="mb-16 scroll-mt-20"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 pb-3 border-b border-gray-300">
-                {item.title}
-              </h2>
-              <PlaceholderContent />
+        {/* Main Content Area */}
+        <main 
+          ref={mainContentRef} 
+          className="flex-1 md:h-screen md:overflow-y-auto scroll-smooth"
+        >
+          {/* Content sections with margins bottom, left and right */}
+          <div className="pl-20 pr-8 pt-16 pb-12">
+            {contentSections.map(item => (
+              // Each Main Content Section
+              <section 
+                key={item.id} 
+                id={item.id} 
+                className="mb-16 scroll-mt-20"
+              >
+                <h2 className="text-xl font-bold text-gray-900 mb-6">
+                  {item.title}
+                </h2>
+                <PlaceholderContent />
 
-              {/* Render Subsections if they exist */}
-              {item.subsections && (
-                <div className="space-y-12 mt-12">
-                  {item.subsections.map(subItem => (
-                    <section
-                      key={subItem.id}
-                      id={subItem.id}
-                      className="scroll-mt-20"
-                    >
-                      <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                        {subItem.title}
-                      </h3>
-                      <PlaceholderContent />
-                    </section>
-                  ))}
-                </div>
-              )}
-            </section>
-          ))}
-        </div>
-      </main>
+                {/* Render Subsections if they exist */}
+                {item.subsections && (
+                  <div className="space-y-12 mt-12">
+                    {item.subsections.map(subItem => (
+                      <section
+                        key={subItem.id}
+                        id={subItem.id}
+                        className="scroll-mt-20"
+                      >
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                          {subItem.title}
+                        </h3>
+                        <PlaceholderContent />
+                      </section>
+                    ))}
+                  </div>
+                )}
+              </section>
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

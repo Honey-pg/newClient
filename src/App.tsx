@@ -83,6 +83,8 @@ function App() {
             <Route path="/publish/guide-for-authors" element={<GuideForAuthors />} />
             <Route path="/submit-article" element={<SubmitArticle />} />
             <Route path="/policies-and-guidelines" element={<PoliciesAndGuidelines />} />
+            <Route path="/guide_for_authors" element={<GuideForAuthors />} />
+
           </Routes>
         </main>
 
